@@ -1,2 +1,2 @@
-# Tucil3-Stima-PathFinding
+# Tucil3-Stima-PathFinder
 Path Finding with A* Algorithm
