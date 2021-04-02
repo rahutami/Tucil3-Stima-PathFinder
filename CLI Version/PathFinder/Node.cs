@@ -11,6 +11,9 @@ namespace PathFinder
         private int x;
         private int y;
         private List<int> adjList;
+        private double estimatedDistance;
+        private double distanceFromStart;
+        private int parentID;
 
         public Node(string name, int id, int x, int y)
         {
@@ -19,6 +22,9 @@ namespace PathFinder
             this.x = x;
             this.y = y;
             adjList = new List<int>();
+            estimatedDistance = -1;
+            distanceFromStart = -1;
+            parentID = 0;
         }
 
         public void insertAdjNode(int adjNodeID)
@@ -50,6 +56,22 @@ namespace PathFinder
         public List<int> GetAdjList()
         {
             return adjList;
+        }
+
+        //Setter
+        public void SetEstimatedDistance(double est)
+        {
+            estimatedDistance = est;
+        }
+
+        public void SetDistanceFromStart(double dist)
+        {
+            distanceFromStart = dist;
+        }
+
+        public void SetParentID(int Pid)
+        {
+            parentID = Pid;
         }
     }
 }
