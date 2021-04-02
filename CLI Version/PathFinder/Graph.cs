@@ -55,6 +55,29 @@ namespace PathFinder
                 Console.WriteLine();
             }
         }
+
+        public double GetStraightDistance(int id1, int id2)
+        {
+            Node node1 = GetNode(id1);
+            Node node2 = GetNode(id2);
+
+            double yDistance = node1.GetY() - node2.GetY();
+            double xDistance = node1.GetX() - node2.GetX();
+
+            return Math.Sqrt(Math.Pow(yDistance, 2) + Math.Pow(xDistance, 2));
+        }
+
+        public double GetStraightDistance(string name1, string name2)
+        {
+            Node node1 = GetNode(name1);
+            Node node2 = GetNode(name2);
+
+            double yDistance = node1.GetY() - node2.GetY();
+            double xDistance = node1.GetX() - node2.GetX();
+
+            return Math.Sqrt(Math.Pow(yDistance, 2) + Math.Pow(xDistance, 2));
+        }
+
         public static Graph CreateGraph(string path)
         {
             Graph graph = new Graph();
