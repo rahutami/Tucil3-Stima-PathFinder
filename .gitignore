@@ -1,2 +1,3 @@
-PathFinder/bin/
+src/PathFinder/bin/
 obj/
+git rm --checked src/PathFinder/bin/
