@@ -122,14 +122,6 @@ namespace PathFinder
             return Math.Sqrt(Math.Pow(yDistance, 2) + Math.Pow(xDistance, 2));
         }
 
-        public void EstimateDistanceToDestination(Node destination)
-        {
-            foreach(Node node in nodes)
-            {
-                node.SetEstimatedDistance(GetStraightDistance(node.GetID(), destination.GetID()));
-            }
-        }
-
         public void Clear()
         {
             foreach(Node node in nodes)

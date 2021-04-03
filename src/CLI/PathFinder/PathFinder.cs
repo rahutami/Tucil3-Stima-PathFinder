@@ -40,6 +40,7 @@ namespace PathFinder
                 currentNode.Visit();
 ;            }
             List<Node> path = GetPath(startNode, destNode, map);
+            map.Clear();
             return path;
         }
 
