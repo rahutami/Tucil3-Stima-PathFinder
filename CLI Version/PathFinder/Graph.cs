@@ -93,6 +93,7 @@ namespace PathFinder
                 node.SetDistanceFromStart(-1);
                 node.SetEstimatedDistance(-1);
                 node.SetParentID(0);
+                node.UnVisit();
             }
         }
 
