@@ -6,7 +6,7 @@ namespace PathFinder
     {
         static void Main(string[] args)
         {
-            Graph map = Graph.CreateGraph("D:\\Users\\USER\\Documents\\OneDrive - Institut Teknologi Bandung\\Kuliah\\Semester 4\\IF2211 - Strategi Algoritma\\Tugas\\Tucil 3\\Path-Finder\\test\\test.txt");
+            Graph map = new Graph("D:\\Users\\USER\\Documents\\OneDrive - Institut Teknologi Bandung\\Kuliah\\Semester 4\\IF2211 - Strategi Algoritma\\Tugas\\Tucil 3\\Path-Finder\\test\\test.txt");
             map.PrintNodes();
             Console.WriteLine();
 
