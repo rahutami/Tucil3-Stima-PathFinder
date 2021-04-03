@@ -8,15 +8,15 @@ namespace PathFinder
     {
         private string name;
         private int id;
-        private int x;
-        private int y;
+        private double x;
+        private double y;
         private List<int> adjList;
         private double estimatedDistance;
         private double distanceFromStart;
         private int parentID;
         private bool visited;
 
-        public Node(string name, int id, int x, int y)
+        public Node(string name, int id, double x, double y)
         {
             this.name = name;
             this.id = id;
@@ -48,12 +48,12 @@ namespace PathFinder
             return name;
         }
 
-        public int GetX()
+        public double GetX()
         {
             return x;
         }
 
-        public int GetY()
+        public double GetY()
         {
             return y;
         }

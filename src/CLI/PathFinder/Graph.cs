@@ -21,14 +21,18 @@ namespace PathFinder
 
             for (int i = 1; i <= n; i++)
             {
-                int x, y;
-                string name;
+                double x, y;
+                string name = "";
 
                 // format per line X Y Nama
                 string[] identity = graphFile.ReadLine().Split(" ");
-                Int32.TryParse(identity[0], out x);
-                Int32.TryParse(identity[1], out y);
-                name = identity[2];
+                Double.TryParse(identity[0], out x);
+                Double.TryParse(identity[1], out y);
+                for(int j = 2; j < identity.Length; j++)
+                {
+                    name += identity[j];
+                    if (j != identity.Length - 1) name += " ";
+                }
 
                 Node node = new Node(name, i, x, y);
                 InsertNode(node);
