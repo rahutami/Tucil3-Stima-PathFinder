@@ -8,20 +8,20 @@ namespace PathFinder
     {
         private string name;
         private int id;
-        private double x;
-        private double y;
+        private double latitude;
+        private double longitude;
         private List<int> adjList;
         private double estimatedDistance;
         private double distanceFromStart;
         private int parentID;
         private bool visited;
 
-        public Node(string name, int id, double x, double y)
+        public Node(string name, int id, double latitude, double longitude)
         {
             this.name = name;
             this.id = id;
-            this.x = x;
-            this.y = y;
+            this.latitude = latitude;
+            this.longitude = longitude;
             adjList = new List<int>();
             estimatedDistance = -1;
             distanceFromStart = -1;
@@ -34,12 +34,20 @@ namespace PathFinder
             adjList.Add(adjNodeID);
         }
 
-        public double GetStraightDistance(Node node)
+        public double CalculateDistance(Node node)
         {
-            double yDistance = this.GetY() - node.GetY();
-            double xDistance = this.GetX() - node.GetX();
+            double lat1 = latitude*Math.PI/180;
+            double lat2 = node.GetLatitude()*Math.PI/180;
 
-            return Math.Sqrt(Math.Pow(yDistance, 2) + Math.Pow(xDistance, 2));
+            double lonDistance = (longitude - node.GetLongitude())*Math.PI/180;
+            double latDistance = (latitude - node.GetLatitude())*Math.PI/180;
+
+            double a = (Math.Sin(latDistance/2) * Math.Sin(latDistance/2)+ 
+                        Math.Cos(lat1) * Math.Cos(lat2) * 
+                        Math.Sin(lonDistance/2) * Math.Sin(lonDistance/2));
+
+            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1-a));
+            return c * 6371;
         }
 
         //Getter
@@ -48,14 +56,14 @@ namespace PathFinder
             return name;
         }
 
-        public double GetX()
+        public double GetLongitude()
         {
-            return x;
+            return longitude;
         }
 
-        public double GetY()
+        public double GetLatitude()
         {
-            return y;
+            return latitude;
         }
 
         public int GetID()

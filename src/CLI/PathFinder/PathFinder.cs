@@ -6,14 +6,16 @@ namespace PathFinder
 {
     class PathFinder
     {
-        public static List<Node> FindShortestPath(string start, string destination, Graph map)
+        List<Node> path;
+        double distance;
+        public PathFinder(string start, string destination, Graph map)
         {
             Node startNode = map.GetNode(start);
             Node destNode = map.GetNode(destination);
             Node currentNode = startNode;
             SortedQueue queue = new SortedQueue();
             currentNode.SetDistanceFromStart(0);
-            currentNode.SetEstimatedDistance(map.GetStraightDistance(destNode.GetID(), currentNode.GetID()));
+            currentNode.SetEstimatedDistance(currentNode.CalculateDistance(destNode));
             currentNode.Visit();
             while (!queue.IsEmpty() || Equals(currentNode, startNode))
             {
@@ -21,13 +23,13 @@ namespace PathFinder
                 {
                     Node adjNode = map.GetNode(adjID);
 
-                    if(adjNode.GetStraightDistance(currentNode) + adjNode.GetStraightDistance(destNode) + currentNode.GetDistanceFromStart() < adjNode.GetEstimatedDistance() || adjNode.GetEstimatedDistance() == -1)
+                    if(adjNode.CalculateDistance(currentNode) + adjNode.CalculateDistance(destNode) + currentNode.GetDistanceFromStart() < adjNode.GetEstimatedDistance() || adjNode.GetEstimatedDistance() == -1)
                     {
                         adjNode.SetParentID(currentNode.GetID());
 
-                        adjNode.SetDistanceFromStart(adjNode.GetStraightDistance(currentNode) + currentNode.GetDistanceFromStart());
+                        adjNode.SetDistanceFromStart(adjNode.CalculateDistance(currentNode) + currentNode.GetDistanceFromStart());
 
-                        adjNode.SetEstimatedDistance(adjNode.GetDistanceFromStart() + adjNode.GetStraightDistance(destNode));
+                        adjNode.SetEstimatedDistance(adjNode.GetDistanceFromStart() + adjNode.CalculateDistance(destNode));
                     }
 
                     // Kalo node belom divisit dan node bukan destination maka dimasukkin ke queue
@@ -38,16 +40,16 @@ namespace PathFinder
                 }
                 currentNode = queue.Dequeue();
                 currentNode.Visit();
-;            }
-            List<Node> path = GetPath(startNode, destNode, map);
+            }
+            CreatePath(startNode, destNode, map);
+            distance = destNode.GetDistanceFromStart();
             map.Clear();
-            return path;
         }
 
-        public static List<Node> GetPath(Node start, Node destination, Graph map)
+        public void CreatePath(Node start, Node destination, Graph map)
         {
             Node currentNode = destination;
-            List<Node> path = new List<Node>();
+            path = new List<Node>();
             do
             {
                 path.Add(currentNode);
@@ -55,15 +57,24 @@ namespace PathFinder
             } while (!Equals(start, currentNode));
             path.Add(currentNode);
             path.Reverse();
+        }
+
+        public List<Node> GetPath()
+        {
             return path;
         }
 
-        public static void PrintPath(List<Node> path)
+        public void PrintPath()
         {
             foreach(Node node in path)
             {
                 Console.WriteLine(node.GetName());
             }
+        }
+
+        public double GetDistance()
+        {
+            return distance;
         }
     }
 }
