@@ -67,6 +67,18 @@ namespace PathFinder
             graphFile.Close();
         }
 
+        public List<string> GetNodeNames()
+        {
+            List<string> names = new List<string>();
+
+            foreach(Node node in nodes)
+            {
+                names.Add(node.GetName());
+            }
+
+            return names;
+        }
+
         public void InsertAdjMatrix(List<List<bool>> adjMatrix)
         {
             this.adjMatrix = new List<List<bool>>(adjMatrix);
