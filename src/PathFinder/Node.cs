@@ -34,6 +34,7 @@ namespace PathFinder
             adjList.Add(adjNodeID);
         }
 
+        // Menghitung jarak antara this dan node dengan menggunakan haversine function
         public double CalculateDistance(Node node)
         {
             double lat1 = latitude * Math.PI / 180;

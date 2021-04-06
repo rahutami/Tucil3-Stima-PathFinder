@@ -19,9 +19,10 @@ namespace PathFinder
             currentNode.Visit();
             while (currentNode != null)
             {
+                currentNode.Visit();
+                
                 foreach (int adjID in currentNode.GetAdjList())
                 {
-                    currentNode.Visit();
                     Node adjNode = map.GetNode(adjID);
 
                     if (adjNode.CalculateDistance(currentNode) + adjNode.CalculateDistance(destNode) + currentNode.GetDistanceFromStart() < adjNode.GetEstimatedDistance() || adjNode.GetEstimatedDistance() == -1)

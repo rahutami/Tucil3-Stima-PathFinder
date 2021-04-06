@@ -31,15 +31,5 @@ namespace PathFinder
             queue.RemoveAt(0);
             return first;
         }
-
-        public bool IsEmpty()
-        {
-            return queue.Count == 0;
-        }
-
-        public List<Node> GetQueue()
-        {
-            return queue;
-        }
     }
 }

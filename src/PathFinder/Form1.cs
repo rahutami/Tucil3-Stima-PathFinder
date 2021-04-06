@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
-using System.Text.RegularExpressions;
-
+using Viewer = Microsoft.Msagl.GraphViewerGdi.GViewer;
+using MsaglGraph = Microsoft.Msagl.Drawing.Graph;
+using Form = System.Windows.Forms.Form;
+using Color = Microsoft.Msagl.Drawing.Color;
+using Drawing = Microsoft.Msagl.Drawing;
 namespace PathFinder
 {
     public partial class Form1 : Form
@@ -38,11 +33,11 @@ namespace PathFinder
             comboBox2.DataSource = b;
             
             //MSAGL
-            System.Windows.Forms.Form form = new System.Windows.Forms.Form();
+            Form form = new Form();
             //create a viewer object 
-            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            Viewer viewer = new Viewer();
             //create a graph object 
-            Microsoft.Msagl.Drawing.Graph graphh = new Microsoft.Msagl.Drawing.Graph("graphh");
+            MsaglGraph graphh = new MsaglGraph("graphh");
             //create the graph content 
 
             foreach (Node node in map.GetNodes())
@@ -61,6 +56,7 @@ namespace PathFinder
             //associate the viewer with the form 
             panel1.SuspendLayout();
             viewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            if (panel1.Controls.Count != 0) panel1.Controls.RemoveAt(0);
             panel1.Controls.Add(viewer);
             panel1.ResumeLayout();
 
@@ -68,55 +64,68 @@ namespace PathFinder
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panel2.Controls.Clear();
-
-            int selectedIndex1 = comboBox1.SelectedIndex;
-            Object selectedItem = comboBox1.SelectedItem;
-            richTextBox6.Text = selectedItem.ToString();
+            FindPath();
         }
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            panel2.Controls.Clear();
-            int selectedIndex2 = comboBox2.SelectedIndex;
-            Object selectedItem2 = comboBox2.SelectedItem;
-            //string start = richTextBox1.Text;
-            //string destination = selectedItem2.ToString();
-            textBox5.Text = selectedItem2.ToString();
+            FindPath();
+        }
 
-            PathFinder findPath = new PathFinder(map.GetNode(richTextBox6.Text).GetName(), map.GetNode(textBox5.Text).GetName(), map);
+        private void FindPath(){
+            if(comboBox1.Text == "" || comboBox2.Text == "") return;
+
+            PathFinder findPath = new PathFinder(comboBox1.Text, comboBox2.Text, map);
 
             List<Node> path = findPath.GetPath();
             //MSAGL
-            System.Windows.Forms.Form form = new System.Windows.Forms.Form();
             //create a viewer object 
-            Microsoft.Msagl.GraphViewerGdi.GViewer viewer = new Microsoft.Msagl.GraphViewerGdi.GViewer();
+            Viewer viewer = new Viewer();
             //create a graph object 
-            Microsoft.Msagl.Drawing.Graph graphhh = new Microsoft.Msagl.Drawing.Graph("graphhh");
+            MsaglGraph graphhh = new MsaglGraph("graphhh");
             //create the graph content 
 
-
+            List<string> highlightedEdges = new List<string>();
             for(int i = 0; i < path.Count - 1; i++)
             {
                 var Edge = graphhh.AddEdge(path[i].GetName(), path[i+1].GetName());
+                highlightedEdges.Add(path[i].GetID() + " " + path[i+1].GetID());
+                highlightedEdges.Add(path[i+1].GetID() + " " + path[i].GetID());
+                Edge.Attr.Color = Color.Coral;
+                Edge.Attr.ArrowheadAtTarget = Microsoft.Msagl.Drawing.ArrowStyle.None;
+                Edge.LabelText = path[i].CalculateDistance(path[i+1]).ToString() + " m";
+            }
+
+            foreach (Node node in map.GetNodes())
+            {
+                foreach (int adjNode in node.GetAdjList())
+                {
+                    if (node.GetID() < adjNode && !highlightedEdges.Contains(node.GetID() + " " + adjNode)) { 
+                        var Edge = graphhh.AddEdge(node.GetName(), map.GetNode(adjNode).GetName());
+                        Edge.Attr.ArrowheadAtTarget = Microsoft.Msagl.Drawing.ArrowStyle.None;
+                        Edge.LabelText = node.CalculateDistance(map.GetNode(adjNode)).ToString() + " m";
+                    }
+                }
+            }
+
+            foreach (Microsoft.Msagl.Drawing.Node node in graphhh.Nodes)
+            {
+                node.Attr.Color = Color.LightBlue;
+            }
+
+            foreach (Node node in path){
+                graphhh.FindNode(node.GetName()).Attr.FillColor = Color.Yellow;
             }
 
             viewer.Graph = graphhh;
             //associate the viewer with the form 
-            panel2.SuspendLayout();
+            panel1.SuspendLayout();
             viewer.Dock = System.Windows.Forms.DockStyle.Fill;
-            panel2.Controls.Add(viewer);
-            panel2.ResumeLayout();
+            if(panel1.Controls.Count != 0) panel1.Controls.RemoveAt(0);
+            panel1.Controls.Add(viewer);
+            panel1.ResumeLayout();
 
             richTextBox5.Text = findPath.GetDistance().ToString() + " m";
-        }
-
-        
-        private void richTextBox5_TextChanged(object sender, EventArgs e){}
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

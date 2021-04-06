@@ -8,9 +8,8 @@ namespace PathFinder
     class Graph
     {
         private List<Node> nodes;
-        private List<List<bool>> adjMatrix;
         
-
+        // Constructor
         public Graph(string path)
         {
             nodes = new List<Node>();
@@ -48,34 +47,22 @@ namespace PathFinder
                 InsertNode(node);
             }
 
-            List<List<bool>> adjMatrix = new List<List<bool>>();
-
             for (int i = 0; i < n; i++)
             {
                 string[] adjNode = graphFile.ReadLine().Split(" ");
-                List<bool> adjMatrixRow = new List<bool>();
-
                 for (int j = 0; j < n; j++)
                 {
                     if (adjNode[j] == "1")
                     {
                         GetNode(i + 1).insertAdjNode(j + 1);
-                        adjMatrixRow.Add(true);
-                    }
-                    else
-                    {
-                        adjMatrixRow.Add(false);
                     }
                 }
-                adjMatrix.Add(adjMatrixRow);
             }
 
-            
-
-            InsertAdjMatrix(adjMatrix);
             graphFile.Close();
         }
 
+        // Mengembalikan list of nama-nama node yang ada di graf
         public List<string> GetNodeNames()
         {
             List<string> names = new List<string>();
@@ -87,16 +74,14 @@ namespace PathFinder
 
             return names;
         }
-        public void InsertAdjMatrix(List<List<bool>> adjMatrix)
-        {
-            this.adjMatrix = new List<List<bool>>(adjMatrix);
-        }
 
+        // Menambahkan node ke dalam graf
         public void InsertNode(Node node)
         {
             nodes.Add(node);
         }
 
+        // Mengembalikan node yang memiliki ID id
         public Node GetNode(int id)
         {
             foreach(Node node in nodes)
@@ -106,6 +91,7 @@ namespace PathFinder
             return null;
         }
 
+        // Mengembalikan node yang memiliki nama name
         public Node GetNode(string name)
         {
             foreach (Node node in nodes)
@@ -115,11 +101,13 @@ namespace PathFinder
             return null;
         }
 
+        // Mengambil semua node yang ada di graf
         public List<Node> GetNodes()
         {
             return nodes;
         }
 
+// Mereset distance dan status visited
         public void Clear()
         {
             foreach(Node node in nodes)
