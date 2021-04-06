@@ -1,49 +1,60 @@
-# Project Name
-> Here goes your awesome project description!
+# Implementasi Algoritma A* untuk Menentukan Lintasan Terpendek
+> Program ini adalah program untuk menentukan lintasan terpendek antara dua simpul pada sebuah graf berbobot dengan menggunakan algoritma A*.
 
 ## Table of contents
 * [General info](#general-info)
 * [Screenshots](#screenshots)
 * [Technologies](#technologies)
 * [Setup](#setup)
-* [Features](#features)
-* [Status](#status)
-* [Inspiration](#inspiration)
 * [Contact](#contact)
 
 ## General info
-Add more general information about project. What the purpose of the project is? Motivation?
+Program ini dibuat untuk memenuhi Tugas Kecil 3 IF2211 Strategi Algoritma Program Studi Informatika ITB.
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](./img/screenshot.jpg)
 
 ## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+* C#
 
 ## Setup
-Describe how to install / setup your local environement / add link to demo version.
+1. Jalankan program `PathFinder.exe` yang terdapat di folder bin.
+2. Ketik tombol `Browse file` untuk mengunggah file graf.  
 
-## Code Examples
-Show examples of usage:
-`put-your-code-here`
-
-## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
-
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+   File graf memiliki format sebagai berikut:
+   ```
+   <jumlah simpul n>
+   <koordinat garis lintang> <koordinat garis bujur> <nama simpul> (sebanyak n baris)
+   <matriks ketetanggaan nxn>
+   ```
+   
+   Contoh:
+   ```
+   8
+   -6.893216157348017 107.61043379205204 Gerbang Depan ITB
+   -6.893791326286216 107.6130140769148 Rumah Sakit Santo Borromeus
+   -6.887389869593723 107.61353978992962 Jalan Dayang Sumbi
+   -6.885003946847328 107.61362562064774 McDonald Dago
+   -6.8873792181747495 107.61143157379732 Gerbang Dayang Sumbi ITB
+   -6.887693434797744 107.6087386360365 Tamfest
+   -6.893588952101085 107.61189693708492 Masjid Salman
+   -6.894749939631782 107.61168906590126 Jalan Gelap Nyawang
+   0 0 0 0 0 1 1 0
+   0 0 1 0 0 0 1 0
+   0 1 0 1 1 0 0 0
+   0 0 1 0 0 0 0 0
+   0 0 1 0 0 1 0 0
+   1 0 0 0 1 0 0 0
+   1 1 0 0 0 0 0 1
+   0 0 0 0 0 0 1 0
+   ```
+4. Pilih simpul asal dan simpul tujuan
+5. Program akan menampilkan lintasan terpendek dan jarak yang harus ditempuh
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
-
-## Inspiration
-Add here credits. Project inspired by..., based on...
+Project is: _finished_
 
 ## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+Created by  
+[13519181 - Nabilah Erfariani](https://github.com/nabilaherfar)  
+[13519192 - Gayuh Tri Rahutami](https://github.com/wundersmith)
