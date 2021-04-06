@@ -32,8 +32,6 @@ namespace PathFinder
             comboBox1.DataSource = a;
             comboBox2.DataSource = b;
             
-            //MSAGL
-            Form form = new Form();
             //create a viewer object 
             Viewer viewer = new Viewer();
             //create a graph object 
@@ -46,7 +44,7 @@ namespace PathFinder
                 {
                     if (node.GetID() < adjNode) { 
                         var Edge = graphh.AddEdge(node.GetName(), map.GetNode(adjNode).GetName());
-                        Edge.Attr.ArrowheadAtTarget = Microsoft.Msagl.Drawing.ArrowStyle.None;
+                        Edge.Attr.ArrowheadAtTarget = Drawing.ArrowStyle.None;
                         Edge.LabelText = node.CalculateDistance(map.GetNode(adjNode)).ToString() + " m";
                     }
                 }
@@ -78,7 +76,6 @@ namespace PathFinder
             PathFinder findPath = new PathFinder(comboBox1.Text, comboBox2.Text, map);
 
             List<Node> path = findPath.GetPath();
-            //MSAGL
             //create a viewer object 
             Viewer viewer = new Viewer();
             //create a graph object 
@@ -92,7 +89,7 @@ namespace PathFinder
                 highlightedEdges.Add(path[i].GetID() + " " + path[i+1].GetID());
                 highlightedEdges.Add(path[i+1].GetID() + " " + path[i].GetID());
                 Edge.Attr.Color = Color.Coral;
-                Edge.Attr.ArrowheadAtTarget = Microsoft.Msagl.Drawing.ArrowStyle.None;
+                Edge.Attr.ArrowheadAtTarget = Drawing.ArrowStyle.None;
                 Edge.LabelText = path[i].CalculateDistance(path[i+1]).ToString() + " m";
             }
 
@@ -102,13 +99,13 @@ namespace PathFinder
                 {
                     if (node.GetID() < adjNode && !highlightedEdges.Contains(node.GetID() + " " + adjNode)) { 
                         var Edge = graphhh.AddEdge(node.GetName(), map.GetNode(adjNode).GetName());
-                        Edge.Attr.ArrowheadAtTarget = Microsoft.Msagl.Drawing.ArrowStyle.None;
+                        Edge.Attr.ArrowheadAtTarget = Drawing.ArrowStyle.None;
                         Edge.LabelText = node.CalculateDistance(map.GetNode(adjNode)).ToString() + " m";
                     }
                 }
             }
 
-            foreach (Microsoft.Msagl.Drawing.Node node in graphhh.Nodes)
+            foreach (Drawing.Node node in graphhh.Nodes)
             {
                 node.Attr.Color = Color.LightBlue;
             }
