@@ -50,13 +50,17 @@ namespace PathFinder
         {
             Node currentNode = destination;
             path = new List<Node>();
-            do
+
+            if (destination.GetParentID() != 0)
             {
+                do
+                {
+                    path.Add(currentNode);
+                    currentNode = map.GetNode(currentNode.GetParentID());
+                } while (!Equals(start, currentNode));
                 path.Add(currentNode);
-                currentNode = map.GetNode(currentNode.GetParentID());
-            } while (!Equals(start, currentNode));
-            path.Add(currentNode);
-            path.Reverse();
+                path.Reverse();
+            }
         }
 
         public List<Node> GetPath()
