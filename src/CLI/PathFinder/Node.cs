@@ -47,7 +47,7 @@ namespace PathFinder
                         Math.Sin(lonDistance/2) * Math.Sin(lonDistance/2));
 
             double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1-a));
-            return c * 6371;
+            return Math.Round(c * 6371 * 1000);
         }
 
         //Getter

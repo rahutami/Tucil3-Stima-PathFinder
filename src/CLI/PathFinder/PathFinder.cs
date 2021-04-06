@@ -17,10 +17,11 @@ namespace PathFinder
             currentNode.SetDistanceFromStart(0);
             currentNode.SetEstimatedDistance(currentNode.CalculateDistance(destNode));
             currentNode.Visit();
-            while (!queue.IsEmpty() || Equals(currentNode, startNode))
+            while (currentNode != null)
             {
                 foreach (int adjID in currentNode.GetAdjList())
                 {
+                    currentNode.Visit();
                     Node adjNode = map.GetNode(adjID);
 
                     if(adjNode.CalculateDistance(currentNode) + adjNode.CalculateDistance(destNode) + currentNode.GetDistanceFromStart() < adjNode.GetEstimatedDistance() || adjNode.GetEstimatedDistance() == -1)
@@ -39,7 +40,6 @@ namespace PathFinder
                     }
                 }
                 currentNode = queue.Dequeue();
-                currentNode.Visit();
             }
             CreatePath(startNode, destNode, map);
             distance = destNode.GetDistanceFromStart();

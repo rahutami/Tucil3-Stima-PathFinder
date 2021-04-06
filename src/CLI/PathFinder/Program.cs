@@ -8,9 +8,9 @@ namespace PathFinder
         {
             Graph map = new Graph("D:\\Users\\USER\\Documents\\OneDrive - Institut Teknologi Bandung\\Kuliah\\Semester 4\\IF2211 - Strategi Algoritma\\Tugas\\Tucil 3\\Path-Finder\\test\\jalanitb.txt");
 
-            string start = "masjid salman";
-            string destination = "tamfest";
-
+            string start = "Tamfest";
+            string destination = "Jalan Dayang Sumbi";
+          
             PathFinder findPath = new PathFinder(start, destination, map);
 
             // Node node1 = map.GetNode("Gerbang Depan ITB");

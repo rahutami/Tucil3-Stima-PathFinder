@@ -16,7 +16,7 @@ namespace PathFinder
         {
             int i = 0;
 
-            while (i < queue.Count && queue[i].GetEstimatedDistance() > node.GetEstimatedDistance())
+            while (i < queue.Count && queue[i].GetEstimatedDistance() < node.GetEstimatedDistance())
             {
                 i++;
             }
@@ -26,6 +26,7 @@ namespace PathFinder
 
         public Node Dequeue()
         {
+            if (queue.Count == 0) return null;
             Node first = queue[0];
             queue.RemoveAt(0);
             return first;
