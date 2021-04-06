@@ -1,4 +1,4 @@
-# Implementasi Algoritma A* untuk Menentukan Lintasan Terpendek
+# Shortest Path Finder
 > Program ini adalah program untuk menentukan lintasan terpendek antara dua simpul pada sebuah graf berbobot dengan menggunakan algoritma A*.
 
 ## Table of contents
