@@ -1,6 +1,4 @@
-src/CLI/PathFinder/bin/
 src/PathFinder/bin/
 obj/
 .vs/
-git rm --cached src/CLI/PathFinder/bin/
 git rm --cached src/PathFinder/bin/
