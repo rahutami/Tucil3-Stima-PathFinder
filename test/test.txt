@@ -1,11 +1,5 @@
-5
-1 1 Jakarta
-2 3 Bandung
-3 5 Surabaya
-4 6 Malang
-1 2 Bekasi
-0 1 1 0 1
-1 0 0 0 1
-1 0 0 1 0
-0 0 1 0 1
-1 1 0 1 0
+2
+1.0 1.0 Jakarta
+2.0 2.0 Bandung
+0 0
+0 0

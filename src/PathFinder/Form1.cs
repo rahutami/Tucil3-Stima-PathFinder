@@ -122,7 +122,8 @@ namespace PathFinder
             panel1.Controls.Add(viewer);
             panel1.ResumeLayout();
 
-            richTextBox5.Text = findPath.GetDistance().ToString() + " m";
+            if(findPath.GetDistance() == -1) richTextBox5.Text = "- m";
+            else richTextBox5.Text = findPath.GetDistance().ToString() + " m";
         }
     }
 }
