@@ -128,28 +128,10 @@ namespace PathFinder
             }
         }
 
-        // Probably not needed
-        // public double GetStraightDistance(int id1, int id2)
-        // {
-        //     Node node1 = GetNode(id1);
-        //     Node node2 = GetNode(id2);
-
-        //     double latDistance = node1.GetLatitude() - node2.GetLatitude();
-        //     double lonDistance = node1.GetLongitude() - node2.GetLongitude();
-
-        //     return Math.Sqrt(Math.Pow(latDistance, 2) + Math.Pow(lonDistance, 2));
-        // }
-
-        // public double GetStraightDistance(string name1, string name2)
-        // {
-        //     Node node1 = GetNode(name1);
-        //     Node node2 = GetNode(name2);
-
-        //     double latDistance = node1.GetLatitude() - node2.GetLatitude();
-        //     double lonDistance = node1.GetLongitude() - node2.GetLongitude();
-
-        //     return Math.Sqrt(Math.Pow(latDistance, 2) + Math.Pow(lonDistance, 2));
-        // }
+        public List<Node> GetNodes()
+        {
+            return nodes;
+        }
 
         public void Clear()
         {
