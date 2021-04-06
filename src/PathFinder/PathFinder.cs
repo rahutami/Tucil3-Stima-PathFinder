@@ -68,14 +68,6 @@ namespace PathFinder
             return path;
         }
 
-        public void PrintPath()
-        {
-            foreach (Node node in path)
-            {
-                Console.WriteLine(node.GetName());
-            }
-        }
-
         public double GetDistance()
         {
             return distance;

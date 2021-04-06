@@ -9,6 +9,7 @@ namespace PathFinder
     {
         private List<Node> nodes;
         private List<List<bool>> adjMatrix;
+        
 
         public Graph(string path)
         {
@@ -31,9 +32,15 @@ namespace PathFinder
 
                 // Double.TryParse(identity[0], out latitude);
                 // Double.TryParse(identity[1], out longitude);
-                for(int j = 2; j < identity.Length; j++)
+                List<string> list = new List<string>();
+                
+                
+                for (int j = 2; j < identity.Length; j++)
                 {
                     name += identity[j];
+                    list.Add(name);
+                    string[] str = list.ToArray();
+
                     if (j != identity.Length - 1) name += " ";
                 }
 
@@ -63,6 +70,8 @@ namespace PathFinder
                 adjMatrix.Add(adjMatrixRow);
             }
 
+            
+
             InsertAdjMatrix(adjMatrix);
             graphFile.Close();
         }
@@ -71,14 +80,13 @@ namespace PathFinder
         {
             List<string> names = new List<string>();
 
-            foreach(Node node in nodes)
+            foreach (Node node in nodes)
             {
                 names.Add(node.GetName());
             }
 
             return names;
         }
-
         public void InsertAdjMatrix(List<List<bool>> adjMatrix)
         {
             this.adjMatrix = new List<List<bool>>(adjMatrix);
@@ -107,41 +115,10 @@ namespace PathFinder
             return null;
         }
 
-        public void PrintNodes()
+        public List<Node> GetNodes()
         {
-            foreach(Node node in nodes)
-            {
-                Console.Write(node.GetName() + " ");
-                foreach(int adjID in node.GetAdjList())
-                {
-                    Console.Write(GetNode(adjID).GetName() + " ");
-                }
-                Console.WriteLine();
-            }
+            return nodes;
         }
-
-        // Probably not needed
-        // public double GetStraightDistance(int id1, int id2)
-        // {
-        //     Node node1 = GetNode(id1);
-        //     Node node2 = GetNode(id2);
-
-        //     double latDistance = node1.GetLatitude() - node2.GetLatitude();
-        //     double lonDistance = node1.GetLongitude() - node2.GetLongitude();
-
-        //     return Math.Sqrt(Math.Pow(latDistance, 2) + Math.Pow(lonDistance, 2));
-        // }
-
-        // public double GetStraightDistance(string name1, string name2)
-        // {
-        //     Node node1 = GetNode(name1);
-        //     Node node2 = GetNode(name2);
-
-        //     double latDistance = node1.GetLatitude() - node2.GetLatitude();
-        //     double lonDistance = node1.GetLongitude() - node2.GetLongitude();
-
-        //     return Math.Sqrt(Math.Pow(latDistance, 2) + Math.Pow(lonDistance, 2));
-        // }
 
         public void Clear()
         {
