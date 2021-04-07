@@ -62,7 +62,7 @@ namespace PathFinder
             // 
             this.panel1.Location = new System.Drawing.Point(80, 140);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(701, 466);
+            this.panel1.Size = new System.Drawing.Size(701, 356);
             this.panel1.TabIndex = 1;
             // 
             // openFileDialog1
@@ -74,7 +74,7 @@ namespace PathFinder
             this.comboBox1.BackColor = System.Drawing.Color.DarkTurquoise;
             this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(80, 661);
+            this.comboBox1.Location = new System.Drawing.Point(80, 554);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(218, 23);
             this.comboBox1.TabIndex = 2;
@@ -85,7 +85,7 @@ namespace PathFinder
             this.comboBox2.BackColor = System.Drawing.Color.DarkTurquoise;
             this.comboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(352, 661);
+            this.comboBox2.Location = new System.Drawing.Point(352, 554);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(201, 23);
             this.comboBox2.TabIndex = 3;
@@ -142,7 +142,7 @@ namespace PathFinder
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox1.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBox1.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.richTextBox1.Location = new System.Drawing.Point(80, 622);
+            this.richTextBox1.Location = new System.Drawing.Point(80, 515);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.Size = new System.Drawing.Size(151, 26);
             this.richTextBox1.TabIndex = 13;
@@ -154,7 +154,7 @@ namespace PathFinder
             this.richTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox4.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.richTextBox4.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.richTextBox4.Location = new System.Drawing.Point(352, 622);
+            this.richTextBox4.Location = new System.Drawing.Point(352, 515);
             this.richTextBox4.Name = "richTextBox4";
             this.richTextBox4.Size = new System.Drawing.Size(151, 25);
             this.richTextBox4.TabIndex = 14;
@@ -166,7 +166,7 @@ namespace PathFinder
             this.richTextBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBox5.Font = new System.Drawing.Font("Perpetua Titling MT", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.richTextBox5.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.richTextBox5.Location = new System.Drawing.Point(594, 654);
+            this.richTextBox5.Location = new System.Drawing.Point(594, 547);
             this.richTextBox5.Name = "richTextBox5";
             this.richTextBox5.Size = new System.Drawing.Size(178, 30);
             this.richTextBox5.TabIndex = 15;
@@ -178,7 +178,7 @@ namespace PathFinder
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Font = new System.Drawing.Font("Perpetua Titling MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.textBox2.ForeColor = System.Drawing.Color.DarkTurquoise;
-            this.textBox2.Location = new System.Drawing.Point(594, 626);
+            this.textBox2.Location = new System.Drawing.Point(594, 519);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(129, 16);
             this.textBox2.TabIndex = 16;
@@ -190,7 +190,7 @@ namespace PathFinder
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.ClientSize = new System.Drawing.Size(852, 495);
+            this.ClientSize = new System.Drawing.Size(852, 592);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.richTextBox5);
             this.Controls.Add(this.richTextBox4);

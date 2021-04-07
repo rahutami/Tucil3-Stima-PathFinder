@@ -10,11 +10,21 @@ namespace PathFinder
         {
             Node startNode = map.GetNode(start);
             Node destNode = map.GetNode(destination);
+
+            if (startNode == null || destNode == null)
+            {
+                path = new List<Node>();
+                distance = 0;
+                return;
+            }
+
             Node currentNode = startNode;
             SortedQueue queue = new SortedQueue();
+
             currentNode.SetDistanceFromStart(0);
             currentNode.SetEstimatedDistance(currentNode.CalculateDistance(destNode));
             currentNode.Visit();
+
             while (currentNode != null)
             {
                 currentNode.Visit();
