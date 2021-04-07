@@ -14,7 +14,7 @@ namespace PathFinder
             if (startNode == null || destNode == null)
             {
                 path = new List<Node>();
-                distance = 0;
+                distance = -1;
                 return;
             }
 
