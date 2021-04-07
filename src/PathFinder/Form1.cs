@@ -122,7 +122,7 @@ namespace PathFinder
             panel1.Controls.Add(viewer);
             panel1.ResumeLayout();
 
-            if(findPath.GetDistance() == -1) richTextBox5.Text = "- m";
+            if(findPath.GetDistance() == -1) richTextBox5.Text = "- m (tidak ada jalur)";
             else richTextBox5.Text = findPath.GetDistance().ToString() + " m";
         }
     }

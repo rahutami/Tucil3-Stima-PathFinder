@@ -168,7 +168,7 @@ namespace PathFinder
             this.richTextBox5.ForeColor = System.Drawing.Color.DarkTurquoise;
             this.richTextBox5.Location = new System.Drawing.Point(594, 547);
             this.richTextBox5.Name = "richTextBox5";
-            this.richTextBox5.Size = new System.Drawing.Size(178, 30);
+            this.richTextBox5.Size = new System.Drawing.Size(232, 30);
             this.richTextBox5.TabIndex = 15;
             this.richTextBox5.Text = "";
             // 
